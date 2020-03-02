@@ -4,7 +4,7 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser')
 // const request = require('request')
-const port = process.env.PORT;
+const port = 3001;
 const https = require('https')
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -35,7 +35,7 @@ app.post('/', (req, res) => {
     const url = "https://us19.api.mailchimp.com/3.0/lists/58a8ef78e3";
     const option = {
         method: 'POST',
-        auth: 'kykarl:5e0fb59d5a5b5c31f16f1b8e1eb0d4ea-us1'
+        auth: 'kykarl:5e0fb59d5a5b5c31f16f1b8e1eb0d4ea-us19'
     }
 
     const request = https.request(url, option, (response) => {
@@ -46,7 +46,7 @@ app.post('/', (req, res) => {
             res.sendFile(__dirname + '/failure.html')
         }
         response.on('data', (data) => {
-            console.log(JSON.parse(data))
+            // console.log(JSON.parse(data))
         })
     })
 
@@ -59,7 +59,7 @@ app.post('/failure', (req, res) => {
     res.redirect('/')
 })
 
-app.listen(port || 3001, () => {
+app.listen(process.env.PORT || port, () => {
     console.log(`Server is running on port ${port}`)
 })
 
