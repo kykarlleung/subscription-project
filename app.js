@@ -32,10 +32,10 @@ app.post('/', (req, res) => {
         ]
     }
     const jsonData = JSON.stringify(data);
-    const url = "https://us19.api.mailchimp.com/3.0/lists/58a8ef78e3";
+    const url = "https://usX.api.mailchimp.com/3.0/lists/YYYYYYYY"; //replace X and Ys
     const option = {
         method: 'POST',
-        auth: 'kykarl:5e0fb59d5a5b5c31f16f1b8e1eb0d4ea-us19'
+        auth: '' //put your api key here
     }
 
     const request = https.request(url, option, (response) => {
@@ -63,6 +63,3 @@ app.listen(process.env.PORT || port, () => {
     console.log(`Server is running on port ${port}`)
 })
 
-
-//mailchimp: 5e0fb59d5a5b5c31f16f1b8e1eb0d4ea-us19
-//List ID: 58a8ef78e3
